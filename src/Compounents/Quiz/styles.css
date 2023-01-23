@@ -1,0 +1,7 @@
+.choice{
+    width : 180px;
+}
+
+.quizImage > img {
+    object-fit: fill !important;
+}
