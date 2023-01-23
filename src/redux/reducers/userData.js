@@ -8,7 +8,8 @@ const initialState = {
 
 export default function categoriesReducer (state = initialState, action) {
     switch(action.type){
-        case ActionTypes.LOGIN_LOADING || ActionTypes.SIGNUP_LOADING :
+        case ActionTypes.SIGNUP_LOADING:
+        case ActionTypes.LOGIN_LOADING:
             return {
                 ...state ,
                 loading: true,
@@ -22,14 +23,16 @@ export default function categoriesReducer (state = initialState, action) {
         //         data : [],
         //         error: null
         //     }
-        case ActionTypes.LOGIN_SUCCESS || ActionTypes.SIGNUP_SUCCESS:
+        case  ActionTypes.SIGNUP_SUCCESS:
+        case ActionTypes.LOGIN_SUCCESS:
             return {
                 ...state,
                 loading: false ,
                 error: null,
                 data: action.payload
             }
-        case ActionTypes.LOGIN_ERROR || ActionTypes.SIGNUP_ERROR:
+        case ActionTypes.LOGIN_ERROR:
+        case ActionTypes.SIGNUP_ERROR:
             return {
                 ...state,
                 loading: false,
