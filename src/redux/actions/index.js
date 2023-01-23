@@ -28,7 +28,7 @@ export const getCategoriesSuccess=(content)=>{
 export const fetchGetCategories=()=>(dispatch)=>{
     // STEP 1 : Trigger the Loading state
     dispatch(getCategoriesLoading());
-    axios.get("http://localhost:5000/public/categories/all")
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/public/categories/all`)
         .then(response =>{
             // STEP 2.1 Once we get the jokes , we store them in the jokes reducer
             console.log("response =", response)
@@ -70,7 +70,7 @@ export const fetchGetQuizzesCategory=(categoryId)=>(dispatch)=>{
     return new Promise((resolve , reject)=>{
         // STEP 1 : Trigger the Loading state
         dispatch(getQuizzesCategoryLoading());
-        axios.get(`http://localhost:5000/public/categories/${categoryId}/quizzes`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/public/categories/${categoryId}/quizzes`)
             .then(response =>{
                 // STEP 2.1 Once we get the jokes , we store them in the jokes reducer
                 console.log("response =", response)
@@ -118,7 +118,7 @@ export const fetchLogin=(data)=>(dispatch)=>{
     return new Promise((resolve , reject)=>{
         // STEP 1 : Trigger the Loading state
         dispatch(loginLoading());
-        axios.post(`http://localhost:5000/public/login/user`, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/public/login/user`, {
             email : email , password : password
         })
             .then(response =>{
@@ -167,7 +167,7 @@ export const fetchSignup=(data)=>(dispatch)=>{
     return new Promise((resolve , reject)=>{
         // STEP 1 : Trigger the Loading state
         dispatch(signupLoading());
-        axios.post(`http://localhost:5000/public/signup/user`, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/public/signup/user`, {
             mail : email , password : password , userName : userName
         })
             .then(response =>{
@@ -210,7 +210,7 @@ export const fetchSendAnswer=(data)=>(dispatch)=>{
     return new Promise((resolve , reject)=>{
         // STEP 1 : Trigger the Loading state
         // dispatch(loginLoading());
-        axios.post(`http://localhost:5000/users/quiz/submit-answer`, {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/quiz/submit-answer`, {
             quizID : data.quizID , isCorrect: data.isCorrect
         } , {headers : headers})
             .then(response =>{
